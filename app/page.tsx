@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import FeatureStrip from "@/components/FeatureStrip";
 import WhoWeAre from "@/components/WhoWeAre";
 import WhatWeDo from "@/components/WhatWeDo";
+import Products from "@/components/Products";
 import ImpactProjects from "@/components/ImpactProjects";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -15,6 +16,7 @@ export default function Home() {
         <Hero />
         <FeatureStrip />
         <WhoWeAre />
+        <Products />
         <WhatWeDo />
         <ImpactProjects />
         <ContactSection />

@@ -94,11 +94,11 @@ export default function Footer() {
       <div className="mx-auto mt-8 flex max-w-7xl flex-col items-center justify-between gap-2 border-t border-white/10 pt-6 text-xs text-white/50 sm:flex-row">
         <p>&copy; {new Date().getFullYear()} 28 Dimensions. All Rights Reserved.</p>
         <p>
-          <a href="#" className="hover:text-white">
+          <a href="/privacy-policy" className="hover:text-white">
             Privacy Policy
           </a>{" "}
           and{" "}
-          <a href="#" className="hover:text-white">
+          <a href="/terms-of-service" className="hover:text-white">
             Terms of Use
           </a>
           .
