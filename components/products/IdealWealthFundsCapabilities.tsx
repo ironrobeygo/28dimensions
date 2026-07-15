@@ -1,8 +1,8 @@
 import {
-  Layers,
+  Users,
+  ArrowLeftRight,
+  UserCheck,
   BarChart3,
-  ShieldCheck,
-  MonitorSmartphone,
   Calculator,
   FileBarChart2,
   type LucideIcon,
@@ -17,52 +17,76 @@ type Capability = {
 
 const capabilities: Capability[] = [
   {
-    icon: Layers,
-    title: "End-to-End Investment Management",
+    icon: Users,
+    title: "Customer Management",
     description:
-      "Supports pre-deal analysis, real-time portfolio positions, cash-flow tracking, profitability monitoring, dealing, settlements, corporate actions, MTM valuation, accounting and NAV generation.",
+      "Manage customer and account information with KYC controls, configurable risk profiling, family hierarchy and document tracking.",
     points: [
-      "Integrated front, middle and back office",
-      "Multi-asset investment operations",
+      "Customer & account maintenance",
+      "Risk profiling",
+      "KYC controls",
+      "Document tracking",
+    ],
+  },
+  {
+    icon: ArrowLeftRight,
+    title: "Customer Order Flow Management",
+    description:
+      "Capture customer investment orders and seamlessly route them to internal or third-party fund management modules for market trade execution.",
+    points: [
+      "Order capture",
+      "Portfolio management orders",
+      "Routing to internal or third-party fund management modules",
+      "Trade execution workflow",
+    ],
+  },
+  {
+    icon: UserCheck,
+    title: "Investor Servicing",
+    description:
+      "Support investor subscriptions, redemptions, SIPs, dividend processing, unitisation and related transaction workflows.",
+    points: [
+      "Subscription & redemption",
+      "SIP processing",
+      "Unitisation",
+      "Investor transactions",
     ],
   },
   {
     icon: BarChart3,
-    title: "FundSense Business Intelligence",
+    title: "Fund Management",
     description:
-      "FundSense brings together data from multiple sources and supports interactive analysis, visualisation and collaborative decision-making.",
-    points: ["Drag-and-drop data exploration", "Personalised analytical views"],
-  },
-  {
-    icon: ShieldCheck,
-    title: "Compliance & Risk",
-    description:
-      "A configurable framework for monitoring investment limits, business validations and risk reporting.",
+      "Automate front-, middle- and back-office investment operations, including portfolio management, dealing, settlements, corporate actions and multi-asset investment processing.",
     points: [
-      "Pre- and post-trade compliance monitoring",
-      "Support for IFRS, GIPS, FATCA and AMLA requirements",
+      "Portfolio management",
+      "Dealing",
+      "Corporate actions",
+      "Multi-asset support",
     ],
   },
   {
-    icon: MonitorSmartphone,
-    title: "Omnichannel Access",
-    description:
-      "Provides a unified experience through browsers, smartphones and other supported channels, helping authorised users access information and platform functions.",
-    points: ["Browser and smartphone access", "Automated email and SMS alerts for critical events"],
-  },
-  {
     icon: Calculator,
-    title: "Valuation, Accounting & NAV",
+    title: "NAV & Valuation",
     description:
-      "Supports mark-to-market valuation, investment accounting, accruals, amortisation, corporate actions and NAV calculation.",
-    points: ["Rule-based valuation", "Automated accounting and NAV processing"],
+      "Automate mark-to-market valuation, investment accounting, accruals, amortisation and daily NAV generation through configurable valuation rules.",
+    points: [
+      "Rule-based valuation",
+      "MTM pricing",
+      "NAV generation",
+      "Investment accounting",
+    ],
   },
   {
     icon: FileBarChart2,
-    title: "Reporting & Analytics",
+    title: "Compliance, Reporting & Analytics",
     description:
-      "Provides client reports, regulatory and compliance reports, MIS reporting and configurable report-design capabilities.",
-    points: ["Built-in report designer", "Portfolio and investment analysis"],
+      "Monitor investment limits and generate regulatory, compliance and MIS reports using built-in reporting and report-design functionality.",
+    points: [
+      "Regulatory reporting",
+      "MIS reporting",
+      "Compliance monitoring",
+      "Configurable reports",
+    ],
   },
 ];
 

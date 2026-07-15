@@ -11,19 +11,19 @@ const industries: IndustryRow[] = [
     icon: Landmark,
     industry: "Banking",
     support:
-      "Supports integrated front-, middle- and back-office treasury operations including dealing, settlements, risk management, compliance, accounting and reporting across all asset classes.",
+      "Supports integrated treasury operations across front, middle and back office, including dealing, settlement, risk management, exposure monitoring and reporting.",
   },
   {
     icon: Building2,
     industry: "Investment Banks",
     support:
-      "Enables multi-asset trading, derivatives, real-time MTM, counterparty limits, valuation and settlement with enhanced risk monitoring and decision support.",
+      "Supports multi-asset treasury operations, derivatives, mark-to-market valuation, counterparty exposure monitoring, settlement and decision support.",
   },
   {
     icon: Landmark,
     industry: "Financial Institutions",
     support:
-      "Provides a unified treasury platform for position monitoring, cash and liquidity management, mark-to-market valuation, regulatory compliance and performance reporting.",
+      "Provides integrated position monitoring, cash-flow forecasting, market-risk management, investment-limit monitoring and treasury reporting.",
   },
 ];
 

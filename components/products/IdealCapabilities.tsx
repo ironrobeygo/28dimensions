@@ -17,8 +17,9 @@ type Capability = {
 const capabilities: Capability[] = [
   {
     icon: Layers,
-    title: "Integrated Treasury Operations",
-    description: "Supports all treasury activities across RBU and FCBU.",
+    title: "Integrated RBU and FCBU Treasury Operations",
+    description:
+      "Supports treasury operations across RBU and FCBU, with integrated exposure monitoring and a consolidated end-of-day trial balance.",
     points: [
       "Money markets",
       "Repo & reverse repo",
@@ -58,10 +59,11 @@ const capabilities: Capability[] = [
     title: "FX & Customer Workflows",
     description: "End-to-end customer foreign exchange capabilities.",
     points: [
-      "Direct to customer FX dealing",
-      "Inward remittance reconciliation",
-      "Currency notes, TT outward",
-      "Travellers cheques & demand drafts",
+      "Direct-to-customer FX dealing",
+      "Inward-remittance reconciliation",
+      "SWIFT statement processing",
+      "Currency notes and outward TT",
+      "Travellers cheques and demand drafts",
     ],
   },
   {
@@ -69,10 +71,11 @@ const capabilities: Capability[] = [
     title: "Reporting & Data Visualisation",
     description: "Interactive reporting and visual analytics.",
     points: [
-      "Consolidated exposure reporting",
-      "Drill-down & ad-hoc reporting",
+      "Interactive data visualisation",
       "Personalised dashboards",
-      "Drag-and-drop data visualisation",
+      "Drag-and-drop data integration",
+      "Multi-source data analysis",
+      "Collaborative insight sharing",
     ],
   },
 ];

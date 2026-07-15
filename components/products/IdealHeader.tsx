@@ -37,8 +37,8 @@ export default function IdealHeader() {
             Home
           </Link>
           <ChevronRight size={12} />
-          <Link href="/#our-products" className="text-brand-orange transition hover:text-brand-orange-dark">
-            Products
+          <Link href="/#enterprise-solution" className="text-brand-orange transition hover:text-brand-orange-dark">
+            Enterprise Solution
           </Link>
           <ChevronRight size={12} />
           <span className="text-white/70">iDeal Integrated Treasury</span>
@@ -46,18 +46,28 @@ export default function IdealHeader() {
 
         <div className="mt-8 max-w-md lg:max-w-lg">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange">
-            Our Product
+            Our Enterprise Solution
           </p>
+          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/60">
+            <span>Powered by</span>
+            <Image
+              src="/assets/enterprise-solution/credence-analytics-logo.png"
+              alt="Credence Analytics"
+              width={110}
+              height={20}
+              className="h-4 w-auto"
+            />
+          </div>
           <h1 className="mt-3 text-3xl font-bold leading-tight text-white sm:text-4xl">
             iDeal Integrated Treasury
           </h1>
           <p className="mt-4 text-lg font-semibold text-white">
-            Integrated Bank Treasury Management Platform
+            Integrated Treasury Management Solution for Banks and Financial Institutions
           </p>
           <p className="mt-4 text-sm text-white/60">
-            An integrated STP treasury solution connecting dealing, risk management, operations,
-            settlements and reporting across the front, middle and back office of banks and
-            financial institutions.
+            An integrated straight-through-processing treasury solution that connects dealing,
+            risk management, operations, settlement and reporting across the front, middle and
+            back office of banks and financial institutions.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">

@@ -28,7 +28,7 @@ const colorStyles: Record<Product["color"], { icon: string; ring: string; check:
 export default function Products() {
   return (
     <section
-      id="our-products"
+      id="enterprise-solution"
       className="relative overflow-hidden bg-brand-dark px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
     >
       <div
@@ -42,7 +42,7 @@ export default function Products() {
       />
       <div className="relative mx-auto max-w-7xl">
         <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange">
-          Our Products
+          Our Enterprise Solution
         </p>
         <h2 className="mt-2 text-center text-2xl font-bold text-white sm:text-3xl">
           Enterprise Financial Solutions by Credence Analytics
@@ -62,7 +62,7 @@ export default function Products() {
           </div>
           <div className="h-10 w-px bg-white/10" />
           <Image
-            src="/assets/our-products/credence-analytics-logo.png"
+            src="/assets/enterprise-solution/credence-analytics-logo.png"
             alt="Credence Analytics logo"
             width={1463}
             height={329}

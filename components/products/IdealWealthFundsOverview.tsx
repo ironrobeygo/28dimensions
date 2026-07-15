@@ -7,26 +7,23 @@ export default function IdealWealthFundsOverview() {
             Overview
           </p>
           <h2 className="mt-3 text-2xl font-bold leading-tight text-white sm:text-3xl">
-            A Complete Investment Management Platform
+            Unified Wealth Management Platform
           </h2>
         </div>
 
         <div className="flex flex-col gap-4 text-sm text-white/60">
           <p>
-            iDeal Wealth and Fund Management is a modular and unified platform supporting
-            front-, middle- and back-office investment management operations.
+            iDEAL Wealth &amp; Funds Management is a modular, holistic investment
+            management platform that unifies front-, middle- and back-office
+            operations for financial institutions. It supports wealth management,
+            trust banking, custody, asset management, insurance, pension funds and
+            family offices through a single integrated platform.
           </p>
           <p>
-            It brings together pre-deal analysis, portfolio and cash-position
-            monitoring, dealing, compliance, settlements, corporate actions,
-            mark-to-market valuation, accounting and NAV generation within one
-            solution.
-          </p>
-          <p>
-            The platform can be deployed as a standalone implementation,
-            integrated with an institution&apos;s existing infrastructure or
-            delivered as a cloud-hosted application. It supports multi-entity,
-            multi-currency and multi-country operations.
+            Built with a modular architecture, the platform can be deployed as a
+            standalone solution or integrated with existing infrastructure. It
+            supports multi-entity, multi-currency and multi-country operations and
+            is cloud-ready for enterprise deployment.
           </p>
         </div>
       </div>

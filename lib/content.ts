@@ -25,8 +25,8 @@ export const navLinks: NavLink[] = [
   { label: "Who We Are", href: "#who-we-are" },
   { label: "What We Do", href: "#what-we-do" },
   {
-    label: "Products",
-    href: "#our-products",
+    label: "Enterprise Solution",
+    href: "#enterprise-solution",
     children: [
       { label: "iDeal Wealth and Fund Management", href: "/products/ideal-wealth-and-fund-management" },
       { label: "iDeal Integrated Treasury", href: "/products/ideal-integrated-treasury" },

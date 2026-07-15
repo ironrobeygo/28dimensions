@@ -37,8 +37,8 @@ export default function CashtreaHeader() {
             Home
           </Link>
           <ChevronRight size={12} />
-          <Link href="/#our-products" className="text-brand-orange transition hover:text-brand-orange-dark">
-            Products
+          <Link href="/#enterprise-solution" className="text-brand-orange transition hover:text-brand-orange-dark">
+            Enterprise Solution
           </Link>
           <ChevronRight size={12} />
           <span className="text-white/70">Cashtrea Treasury Management</span>
@@ -46,8 +46,18 @@ export default function CashtreaHeader() {
 
         <div className="mt-8 max-w-md lg:max-w-lg">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange">
-            Our Product
+            Our Enterprise Solution
           </p>
+          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/60">
+            <span>Powered by</span>
+            <Image
+              src="/assets/enterprise-solution/credence-analytics-logo.png"
+              alt="Credence Analytics"
+              width={110}
+              height={20}
+              className="h-4 w-auto"
+            />
+          </div>
           <h1 className="mt-3 text-3xl font-bold leading-tight text-white sm:text-4xl">
             Cashtrea Treasury Management
           </h1>

@@ -37,8 +37,8 @@ export default function IdealWealthFundsHeader() {
             Home
           </Link>
           <ChevronRight size={12} />
-          <Link href="/#our-products" className="text-brand-orange transition hover:text-brand-orange-dark">
-            Products
+          <Link href="/#enterprise-solution" className="text-brand-orange transition hover:text-brand-orange-dark">
+            Enterprise Solution
           </Link>
           <ChevronRight size={12} />
           <span className="text-white/70">iDeal Wealth and Fund Management</span>
@@ -46,8 +46,18 @@ export default function IdealWealthFundsHeader() {
 
         <div className="mt-8 max-w-md lg:max-w-lg">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange">
-            Our Product
+            Our Enterprise Solution
           </p>
+          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/60">
+            <span>Powered by</span>
+            <Image
+              src="/assets/enterprise-solution/credence-analytics-logo.png"
+              alt="Credence Analytics"
+              width={110}
+              height={20}
+              className="h-4 w-auto"
+            />
+          </div>
           <h1 className="mt-3 text-3xl font-bold leading-tight text-white sm:text-4xl">
             iDeal Wealth and Fund Management
           </h1>
@@ -55,16 +65,9 @@ export default function IdealWealthFundsHeader() {
             Unified Wealth, Investment, Trust Banking &amp; Custody System
           </p>
           <p className="mt-4 text-sm text-white/60">
-            A modular investment management platform connecting{" "}
-            <span className="font-semibold text-white/80">customer management</span>,{" "}
-            <span className="font-semibold text-white/80">investor servicing</span>,{" "}
-            <span className="font-semibold text-white/80">fund management</span>,{" "}
-            <span className="font-semibold text-white/80">portfolio operations</span>,{" "}
-            <span className="font-semibold text-white/80">compliance</span>,{" "}
-            <span className="font-semibold text-white/80">accounting</span>,{" "}
-            <span className="font-semibold text-white/80">custody</span> and{" "}
-            <span className="font-semibold text-white/80">reporting</span> across the
-            investment lifecycle.
+            A unified wealth, investment, trust banking and custody platform designed to
+            support front-, middle- and back-office investment operations across multiple
+            asset classes.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">

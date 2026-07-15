@@ -22,7 +22,7 @@ const industries: IndustryRow[] = [
   {
     industry: "Insurance",
     support:
-      "Support multi-asset investment operations, valuation, accounting, NAV processing, exposure monitoring and regulatory reporting.",
+      "Support multi-asset investment operations, valuation, accounting, NAV processing, investment-limit monitoring and regulatory reporting.",
   },
   {
     industry: "Trust Banking",

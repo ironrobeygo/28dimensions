@@ -13,19 +13,20 @@ export default function IdealOverview() {
 
         <div className="flex flex-col gap-4 text-sm text-white/60">
           <p>
-            iDeal Integrated Treasury is a comprehensive bank treasury management platform that
-            supports the complete treasury management requirements of banks
-            and financial institutions.
+            iDEAL Integrated Treasury is an integrated treasury management solution
+            designed for banks and financial institutions. It supports treasury
+            operations across foreign exchange, money markets, fixed income,
+            derivatives, equities, mutual funds and other financial products.
           </p>
           <p>
-            From money markets to foreign exchange, fixed income to
-            derivatives, iDeal Integrated Treasury unifies front-, middle- and back-office
-            workflows on a single platform with integrated risk management,
-            decision support and reporting.
+            The platform connects front-, middle- and back-office processes
+            while providing integrated risk management, decision-support tools,
+            customer foreign exchange workflows, reporting and data visualisation.
           </p>
           <p>
-            The platform is proven at scale, delivering straight-through
-            processing, real-time visibility and operational excellence.
+            Designed for scalable treasury operations, iDEAL provides integrated
+            processing, consolidated visibility and operational control across
+            multiple treasury functions.
           </p>
         </div>
       </div>
