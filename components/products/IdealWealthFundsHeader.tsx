@@ -37,8 +37,8 @@ export default function IdealWealthFundsHeader() {
             Home
           </Link>
           <ChevronRight size={12} />
-          <Link href="/#enterprise-solution" className="text-brand-orange transition hover:text-brand-orange-dark">
-            Enterprise Solution
+          <Link href="/#enterprise-solutions" className="text-brand-orange transition hover:text-brand-orange-dark">
+            Enterprise Solutions
           </Link>
           <ChevronRight size={12} />
           <span className="text-white/70">iDeal Wealth and Fund Management</span>
