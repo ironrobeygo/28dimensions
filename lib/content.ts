@@ -12,6 +12,11 @@ import {
   Handshake,
   Landmark,
   TrendingUp,
+  Cpu,
+  Coins,
+  FileText,
+  Building2,
+  Umbrella,
   type LucideIcon,
 } from "lucide-react";
 
@@ -126,6 +131,138 @@ export const products: Product[] = [
       "Forex & Hedging (FX exposure analysis & hedging trades)",
     ],
     href: "/products/cashtrea-treasury-management",
+  },
+];
+
+// --- Enterprise Solutions: shared partner/product discovery model ---
+//
+// This holds only reusable discovery/presentation metadata — the fields the
+// homepage section, navigation, and Enterprise Solutions landing page all
+// need (partner identity, product summary card). It deliberately does NOT
+// carry long-form page content (hero copy, overview prose, capabilities /
+// industries lists) — that stays in each page's own components, matching
+// the existing pattern already used by Ideal*/Cashtrea* components, which
+// hardcode their own content rather than sourcing it from here.
+//
+// Per ARCHITECTURE.md (v1.1) → Data model. `components/Products.tsx` still
+// reads `products` directly (unchanged, zero regression risk) until the
+// homepage section is generalized (see DEO-33) to read from
+// `enterprisePartners` instead.
+
+export type EnterpriseProduct = {
+  badge?: string;
+  icon: LucideIcon;
+  color: "green" | "orange" | "purple" | "blue";
+  title: string;
+  subtitle: string;
+  description: string;
+  features: string[];
+  href: string;
+};
+
+export type EnterprisePartner = {
+  slug: string;
+  name: string;
+  /** Optional — omitted where no logo asset exists yet in `public/assets/enterprise-solution/`. */
+  logo?: string;
+  tagline: string;
+  products: EnterpriseProduct[];
+};
+
+// Hamilton Prima Indonesia's product family — Hamilton Engine (overview) +
+// IFRS 9/15/16/17, per PRD.md (v1.1) and ARCHITECTURE.md (v1.1). Content
+// sourced from `context/extracted/Company Profile Hamilton Prima Indonesia (1).pdf.md`
+// and the four IFRS executive summaries in `context/` — not invented.
+const hamiltonProducts: EnterpriseProduct[] = [
+  {
+    icon: Cpu,
+    color: "blue",
+    title: "Hamilton Engine",
+    subtitle: "Predictive Contract Economics Platform",
+    description:
+      "A predictive contract economics platform that models complex business agreements as dynamic financial systems, transforming raw contract data into forward-looking financial insight at the contract level.",
+    features: [
+      "Complete economic profile per contract — revenue, cost, funding, and cash flow",
+      "Predictive P&L and balance sheet simulation before execution",
+      "Agentic AI self-audit engine with immutable data trails",
+    ],
+    href: "/products/hamilton-engine",
+  },
+  {
+    icon: Coins,
+    color: "blue",
+    title: "IFRS 9",
+    subtitle: "Financial Instruments",
+    description:
+      "Operationalizes IFRS 9 classification, measurement, and expected credit loss (ECL) — converting instrument economics into consistent classification, measurement, impairment, and disclosure outcomes across large portfolios.",
+    features: [
+      "Classification & measurement (amortised cost, FVOCI, FVTPL)",
+      "Expected credit loss (ECL) modeling and recalculation",
+      "Predictive accounting ahead of actual postings",
+    ],
+    href: "/products/ifrs-9-financial-instruments",
+  },
+  {
+    icon: FileText,
+    color: "blue",
+    title: "IFRS 15",
+    subtitle: "Revenue Recognition",
+    description:
+      "Operationalizes IFRS 15 revenue recognition — decomposing customer contracts into performance obligations and transaction-price allocation to produce consistent revenue schedules and disclosures.",
+    features: [
+      "Performance obligation & transaction price allocation",
+      "Fulfilment, billing, and modification event tracking",
+      "Revenue schedules, contract assets/liabilities, and disclosures",
+    ],
+    href: "/products/ifrs-15-revenue-recognition",
+  },
+  {
+    icon: Building2,
+    color: "blue",
+    title: "IFRS 16",
+    subtitle: "Lease Accounting",
+    description:
+      "Operationalizes IFRS 16 lease accounting — translating lease terms, payments, and options into right-of-use asset and lease liability measurement, remeasurement, and disclosures.",
+    features: [
+      "Right-of-use asset & lease liability measurement",
+      "Remeasurement for modifications, renewals, and index changes",
+      "Lease disclosure and reporting outcomes",
+    ],
+    href: "/products/ifrs-16-lease-accounting",
+  },
+  {
+    icon: Umbrella,
+    color: "blue",
+    title: "IFRS 17",
+    subtitle: "Insurance Contracts",
+    description:
+      "Operationalizes IFRS 17 insurance contract measurement — contract boundaries, discounting, risk adjustment, and contractual service margin (CSM) — producing repeatable financial projections and disclosures.",
+    features: [
+      "Contract boundary & group-of-contracts measurement",
+      "Discounting, risk adjustment, and CSM allocation",
+      "Repeatable projections, postings, and disclosures",
+    ],
+    href: "/products/ifrs-17-insurance-contracts",
+  },
+];
+
+export const enterprisePartners: EnterprisePartner[] = [
+  {
+    slug: "credence-analytics",
+    name: "Credence Analytics",
+    logo: "/assets/enterprise-solution/credence-analytics-logo.png",
+    tagline: "Enterprise Financial Solutions",
+    // Reuses the existing `products` data verbatim — same content/hrefs,
+    // no duplication, no drift between the old and new models.
+    products: products,
+  },
+  {
+    slug: "hamilton-prima-indonesia",
+    name: "Hamilton Prima Indonesia",
+    // No logo asset exists yet in public/assets/enterprise-solution/ — add
+    // one and set this before the homepage section (DEO-33) renders it.
+    tagline: "Accounting Automation & IFRS Solutions",
+    products: hamiltonProducts,
   },
 ];
 
