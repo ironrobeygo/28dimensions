@@ -144,10 +144,10 @@ export const products: Product[] = [
 // the existing pattern already used by Ideal*/Cashtrea* components, which
 // hardcode their own content rather than sourcing it from here.
 //
-// Per ARCHITECTURE.md (v1.1) → Data model. `components/Products.tsx` still
-// reads `products` directly (unchanged, zero regression risk) until the
-// homepage section is generalized (see DEO-33) to read from
-// `enterprisePartners` instead.
+// Per ARCHITECTURE.md (v1.1) → Data model. The homepage section
+// (`components/EnterpriseSolutions.tsx`, DEO-33) reads `enterprisePartners`
+// below; the standalone `products` array above is retained as-is since
+// Credence's entry here reuses it verbatim (see `enterprisePartners`).
 
 export type EnterpriseProduct = {
   badge?: string;
