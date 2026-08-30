@@ -164,8 +164,17 @@ export default function TermsOfServicePage() {
   return (
     <>
       <Header />
-      <main className="flex-1 bg-brand-dark px-4 pb-20 pt-28 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl">
+      <main className="relative flex-1 overflow-hidden bg-brand-dark px-4 pb-20 pt-28 sm:px-6 lg:px-8">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-70"
+          style={{
+            backgroundImage: "url('/assets/patterns/network.svg')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
+        />
+        <div className="relative mx-auto max-w-3xl">
           <nav aria-label="Breadcrumb" className="flex items-center justify-center gap-2 text-sm">
             <Link href="/" className="text-white/70 hover:text-white">
               Home
