@@ -5,8 +5,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import Logomark from "./Logomark";
-import { navLinks } from "@/lib/content";
+import { navLinks, enterprisePartners } from "@/lib/content";
 import { smoothScrollTo } from "@/lib/smoothScroll";
+import { EnterpriseNavMenuDesktop, EnterpriseNavMenuMobile } from "./EnterpriseNavMenu";
+
+// The `navLinks` entry for Enterprise Solutions still carries its legacy
+// href/children from before this menu became partner-grouped (see
+// EnterpriseNavMenu.tsx) — it's identified here by href so its rendering can
+// be swapped for the mega-menu/accordion below, without editing the
+// `lib/content.ts` data model.
+const ENTERPRISE_SOLUTIONS_HREF = "#enterprise-solution";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +23,11 @@ export default function Header() {
   const pathname = usePathname();
 
   function isLinkActive(href: string, children?: { href: string }[]) {
+    if (href === ENTERPRISE_SOLUTIONS_HREF) {
+      return enterprisePartners.some((partner) =>
+        partner.products.some((product) => pathname === product.href || pathname.startsWith(`${product.href}/`))
+      );
+    }
     if (children) {
       return children.some((child) => pathname === child.href || pathname.startsWith(`${child.href}/`));
     }
@@ -58,36 +71,8 @@ export default function Header() {
         <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => {
             const active = isLinkActive(link.href, link.children);
-            return link.children ? (
-              <div key={link.href} className="group relative">
-                <a
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className={`relative flex items-center gap-1 py-1 text-sm font-medium transition ${
-                    active ? "text-white" : "text-white/80 hover:text-white"
-                  }`}
-                >
-                  {link.label}
-                  <ChevronDown size={14} className="transition group-hover:rotate-180" />
-                  {active && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-brand-orange" />
-                  )}
-                </a>
-                <div className="invisible absolute left-0 top-full pt-3 opacity-0 transition group-hover:visible group-hover:opacity-100">
-                  <div className="min-w-[220px] rounded-lg border border-white/10 bg-brand-dark py-2 shadow-lg">
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        onClick={() => setIsOpen(false)}
-                        className="block px-4 py-2 text-sm font-medium text-white/80 transition hover:bg-white/5 hover:text-white"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
+            return link.href === ENTERPRISE_SOLUTIONS_HREF ? (
+              <EnterpriseNavMenuDesktop key={link.href} active={active} onNavigate={() => setIsOpen(false)} />
             ) : (
               <a
                 key={link.href}
@@ -131,7 +116,9 @@ export default function Header() {
           <nav className="flex flex-col gap-1 px-4 py-4">
             {navLinks.map((link) => {
               const active = isLinkActive(link.href, link.children);
-              return link.children ? (
+              return link.href === ENTERPRISE_SOLUTIONS_HREF ? (
+                <EnterpriseNavMenuMobile key={link.href} active={active} onNavigate={() => setIsOpen(false)} />
+              ) : link.children ? (
                 <div key={link.href}>
                   <button
                     type="button"
