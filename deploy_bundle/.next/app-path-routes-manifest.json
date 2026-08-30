@@ -1,0 +1,13 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/apple-icon.png/route": "/apple-icon.png",
+  "/favicon.ico/route": "/favicon.ico",
+  "/icon.png/route": "/icon.png",
+  "/page": "/",
+  "/privacy-policy/page": "/privacy-policy",
+  "/products/cashtrea-treasury-management/page": "/products/cashtrea-treasury-management",
+  "/products/ideal-integrated-treasury/page": "/products/ideal-integrated-treasury",
+  "/products/ideal-wealth-and-fund-management/page": "/products/ideal-wealth-and-fund-management",
+  "/terms-of-service/page": "/terms-of-service"
+}

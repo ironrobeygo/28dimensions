@@ -1,0 +1,36 @@
+{
+  "node": {
+    "603cbc7db614aacd6c69fa06afebd498acdedcf5f7": {
+      "workers": {
+        "app/page": {
+          "moduleId": 57526,
+          "async": false,
+          "exportedName": "sendContactMessage",
+          "filename": "app/actions.ts"
+        },
+        "app/products/cashtrea-treasury-management/page": {
+          "moduleId": 51241,
+          "async": false,
+          "exportedName": "sendContactMessage",
+          "filename": "app/actions.ts"
+        },
+        "app/products/ideal-integrated-treasury/page": {
+          "moduleId": 52662,
+          "async": false,
+          "exportedName": "sendContactMessage",
+          "filename": "app/actions.ts"
+        },
+        "app/products/ideal-wealth-and-fund-management/page": {
+          "moduleId": 66308,
+          "async": false,
+          "exportedName": "sendContactMessage",
+          "filename": "app/actions.ts"
+        }
+      },
+      "filename": "app/actions.ts",
+      "exportedName": "sendContactMessage"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "auWn3PJqXKEAMHYLjeXSNeEuruQr6zl7C05xz0+PT9U="
+}

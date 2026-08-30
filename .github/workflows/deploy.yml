@@ -1,0 +1,74 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - staging
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      # Next's `output: "standalone"` build already contains server.js,
+      # a pruned production node_modules, and every manifest/BUILD_ID file
+      # the server needs. public/ and .next/static are not included by
+      # default and must be merged in manually.
+      - name: Assemble deploy bundle
+        run: |
+          mkdir -p deploy_bundle
+          cp -r .next/standalone/. deploy_bundle/
+          mkdir -p deploy_bundle/.next/static
+          cp -r .next/static/. deploy_bundle/.next/static/
+          cp -r public deploy_bundle/public
+
+      - name: Set target environment
+        id: target
+        run: |
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            echo "remote_path=/home/dimensions/public_html" >> "$GITHUB_OUTPUT"
+            echo "pm2_app=28d" >> "$GITHUB_OUTPUT"
+          else
+            echo "remote_path=/home/dimensions/public_html/staging" >> "$GITHUB_OUTPUT"
+            echo "pm2_app=28d-staging" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Deploy via rsync over SSH
+        uses: easingthemes/ssh-deploy@v5
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_PORT: ${{ secrets.SSH_PORT }}
+          REMOTE_USER: ${{ secrets.SSH_USER }}
+          SOURCE: "deploy_bundle/"
+          TARGET: ${{ steps.target.outputs.remote_path }}
+          # .env is server-managed (gitignored, never built by CI) and
+          # .well-known is SSL/domain-verification only — never delete either.
+          EXCLUDE: ".env, .well-known/"
+          ARGS: "-rlgoDzvc --delete"
+
+      - name: Reload PM2 process
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            pm2 reload ${{ steps.target.outputs.pm2_app }}
+            pm2 save
