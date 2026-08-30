@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useRef, useEffect } from "react";
-import { Mail, Phone, ArrowRight } from "lucide-react";
+import { Mail, ArrowRight } from "lucide-react";
 import { sendContactMessage, type ContactFormState } from "@/app/actions";
 
 const initialState: ContactFormState = { status: "idle" };
