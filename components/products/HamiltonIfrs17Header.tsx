@@ -1,24 +1,13 @@
 import Link from "next/link";
 import { ChevronRight, ArrowRight } from "lucide-react";
+import { ProductHeroImage, ProductHeroMobileImage } from "./ProductHeroImage";
 
 export default function HamiltonIfrs17Header() {
   return (
     <section className="relative overflow-hidden bg-brand-dark">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-40"
-        style={{
-          backgroundImage: "url('/assets/patterns/network.svg')",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center right",
-          backgroundSize: "cover",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to right, var(--color-brand-dark) 40%, transparent 100%)",
-        }}
+      <ProductHeroImage
+        src="/assets/hero/insurance-contracts-hero-image.jpg"
+        alt="Handshake over an insurance terminology word cloud, representing insurance contracts under IFRS 17"
       />
 
       <div className="relative mx-auto max-w-7xl px-4 pt-20 pb-16 sm:px-6 sm:pt-24 sm:pb-20 lg:px-8 lg:pt-28 lg:pb-24">
@@ -66,6 +55,8 @@ export default function HamiltonIfrs17Header() {
           </div>
         </div>
       </div>
+
+      <ProductHeroMobileImage src="/assets/hero/insurance-contracts-hero-image.jpg" />
     </section>
   );
 }
