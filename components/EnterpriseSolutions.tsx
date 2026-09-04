@@ -68,7 +68,13 @@ export default function EnterpriseSolutions() {
         <div className="mt-12 space-y-16">
           {enterprisePartners.map((partner) => (
             <div key={partner.slug}>
-              <div className="mx-auto flex w-fit max-w-full items-center gap-6 rounded-2xl border border-white/10 px-8 py-4">
+              {/*
+                Below sm, px/gap shrink so the fixed-size "28 DIMENSIONS"
+                lockup and divider don't eat the whole row — that space goes
+                to the partner logo instead of forcing it to collapse to an
+                unreadable sliver. sm+ restores the original px-8/gap-6.
+              */}
+              <div className="mx-auto flex w-fit max-w-full items-center gap-3 rounded-2xl border border-white/10 px-4 py-4 sm:gap-6 sm:px-8">
                 <div className="flex shrink-0 items-center gap-3">
                   <Logomark size={36} />
                   <span className="text-lg font-bold tracking-wide text-white">
