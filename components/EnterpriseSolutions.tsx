@@ -68,21 +68,31 @@ export default function EnterpriseSolutions() {
         <div className="mt-12 space-y-16">
           {enterprisePartners.map((partner) => (
             <div key={partner.slug}>
-              <div className="mx-auto flex w-fit items-center gap-6 rounded-2xl border border-white/10 px-8 py-4">
-                <div className="flex items-center gap-3">
+              <div className="mx-auto flex w-fit max-w-full items-center gap-6 rounded-2xl border border-white/10 px-8 py-4">
+                <div className="flex shrink-0 items-center gap-3">
                   <Logomark size={36} />
                   <span className="text-lg font-bold tracking-wide text-white">
                     28 <span className="block text-xs font-semibold tracking-[0.2em] text-white/60">DIMENSIONS</span>
                   </span>
                 </div>
-                <div className="h-10 w-px bg-white/10" />
+                <div className="h-10 w-px shrink-0 bg-white/10" />
                 {partner.logo ? (
+                  // max-h-9 (not a fixed h-9) caps the logo at today's 36px
+                  // desktop height while leaving both dimensions on "auto",
+                  // so the browser scales width and height together from the
+                  // image's intrinsic aspect ratio instead of stretching it.
+                  // min-w-0 lets this flex item actually shrink below that
+                  // size instead of overflowing the pill on narrow viewports
+                  // (the "28 DIMENSIONS" lockup and divider stay shrink-0, so
+                  // they hold their size and the logo alone absorbs the
+                  // squeeze). object-contain is a no-op at the exact aspect
+                  // ratio but guards against ever cropping or distorting it.
                   <Image
                     src={partner.logo}
                     alt={`${partner.name} logo`}
                     width={partner.logoWidth ?? 1463}
                     height={partner.logoHeight ?? 329}
-                    className="h-9 w-auto"
+                    className="h-auto max-h-9 w-auto max-w-full min-w-0 shrink object-contain"
                   />
                 ) : (
                   <span className="text-lg font-bold tracking-wide text-white">{partner.name}</span>
