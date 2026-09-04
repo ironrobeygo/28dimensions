@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import { ProductHeroImage, ProductHeroMobileImage } from "./ProductHeroImage";
 
@@ -29,7 +30,13 @@ export default function HamiltonEngineHeader() {
           </p>
           <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/60">
             <span>Powered by</span>
-            <span className="font-semibold text-white">Hamilton Prima Indonesia</span>
+            <Image
+              src="/assets/enterprise-solution/hamilton-prima-indonesia-logo.png"
+              alt="Hamilton Prima Indonesia"
+              width={78}
+              height={20}
+              className="h-4 w-auto"
+            />
           </div>
           <h1 className="mt-3 text-3xl font-bold leading-tight text-white sm:text-4xl">
             Hamilton Engine
