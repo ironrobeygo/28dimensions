@@ -94,7 +94,17 @@ export default function EnterpriseSolutions() {
               </p>
               <h3 className="mt-1 text-center text-xl font-bold text-white">{partner.tagline}</h3>
 
-              <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
+              {/*
+                Column count follows product count so each partner's cards
+                lay out evenly: Hamilton's 4 IFRS modules sit 4-across on
+                desktop (2x2 on tablet, 1-up on mobile), while Credence's 3
+                keep their original 3-across desktop layout.
+              */}
+              <div
+                className={`mt-8 grid grid-cols-1 gap-6 ${
+                  partner.products.length === 4 ? "sm:grid-cols-2 lg:grid-cols-4" : "lg:grid-cols-3"
+                }`}
+              >
                 {partner.products.map((product) => {
                   const Icon = product.icon;
                   const styles = colorStyles[product.color];

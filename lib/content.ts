@@ -12,7 +12,6 @@ import {
   Handshake,
   Landmark,
   TrendingUp,
-  Cpu,
   Coins,
   FileText,
   Building2,
@@ -172,25 +171,16 @@ export type EnterprisePartner = {
   products: EnterpriseProduct[];
 };
 
-// Hamilton Prima Indonesia's product family — Hamilton Engine (overview) +
-// IFRS 9/15/16/17, per PRD.md (v1.1) and ARCHITECTURE.md (v1.1). Content
-// sourced from `context/extracted/Company Profile Hamilton Prima Indonesia (1).pdf.md`
-// and the four IFRS executive summaries in `context/` — not invented.
+// Hamilton Prima Indonesia's product family — IFRS 9/15/16/17, per PRD.md
+// (v1.1) and ARCHITECTURE.md (v1.1). Content sourced from the four IFRS
+// executive summaries in `context/` — not invented.
+//
+// Hamilton Engine was removed from this listing per client request — it's
+// no longer sold as a standalone product alongside the four IFRS modules.
+// Its route (/products/hamilton-engine) and page components still exist
+// on disk but are now unlinked from any nav/listing; pending a separate
+// decision on deleting or redirecting the route.
 const hamiltonProducts: EnterpriseProduct[] = [
-  {
-    icon: Cpu,
-    color: "blue",
-    title: "Hamilton Engine",
-    subtitle: "Predictive Contract Economics Platform",
-    description:
-      "A predictive contract economics platform that models complex business agreements as dynamic financial systems, transforming raw contract data into forward-looking financial insight at the contract level.",
-    features: [
-      "Complete economic profile per contract — revenue, cost, funding, and cash flow",
-      "Predictive P&L and balance sheet simulation before execution",
-      "Agentic AI self-audit engine with immutable data trails",
-    ],
-    href: "/products/hamilton-engine",
-  },
   {
     icon: Coins,
     color: "blue",
