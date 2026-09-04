@@ -165,6 +165,9 @@ export type EnterprisePartner = {
   name: string;
   /** Optional — omitted where no logo asset exists yet in `public/assets/enterprise-solution/`. */
   logo?: string;
+  /** Intrinsic pixel dimensions of `logo`, required alongside it so next/image doesn't stretch the mark to another logo's aspect ratio. */
+  logoWidth?: number;
+  logoHeight?: number;
   tagline: string;
   products: EnterpriseProduct[];
 };
@@ -251,6 +254,8 @@ export const enterprisePartners: EnterprisePartner[] = [
     slug: "credence-analytics",
     name: "Credence Analytics",
     logo: "/assets/enterprise-solution/credence-analytics-logo.png",
+    logoWidth: 1463,
+    logoHeight: 329,
     tagline: "Enterprise Financial Solutions",
     // Reuses the existing `products` data verbatim — same content/hrefs,
     // no duplication, no drift between the old and new models.
@@ -259,8 +264,9 @@ export const enterprisePartners: EnterprisePartner[] = [
   {
     slug: "hamilton-prima-indonesia",
     name: "Hamilton Prima Indonesia",
-    // No logo asset exists yet in public/assets/enterprise-solution/ — add
-    // one and set this before the homepage section (DEO-33) renders it.
+    logo: "/assets/enterprise-solution/hamilton-prima-indonesia-logo.png",
+    logoWidth: 780,
+    logoHeight: 200,
     tagline: "Accounting Automation & IFRS Solutions",
     products: hamiltonProducts,
   },

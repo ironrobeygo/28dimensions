@@ -80,8 +80,8 @@ export default function EnterpriseSolutions() {
                   <Image
                     src={partner.logo}
                     alt={`${partner.name} logo`}
-                    width={1463}
-                    height={329}
+                    width={partner.logoWidth ?? 1463}
+                    height={partner.logoHeight ?? 329}
                     className="h-9 w-auto"
                   />
                 ) : (
