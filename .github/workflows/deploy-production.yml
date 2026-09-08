@@ -1,25 +1,23 @@
-name: Deploy Staging
+name: Deploy Production
 
 on:
-  push:
-    branches:
-      - development
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: deploy-staging
+  group: deploy-production
   cancel-in-progress: true
 
 jobs:
   deploy:
-    name: Deploy to staging
+    name: Deploy to production
     runs-on: ubuntu-latest
 
     environment:
-      name: staging
-      url: https://staging.28dimensions.com
+      name: production
+      url: https://28dimensions.com
 
     steps:
       - name: Checkout
@@ -63,7 +61,7 @@ jobs:
             cp -a public deploy/public
           fi
 
-          tar -C deploy -czf 28d-staging-build.tar.gz .
+          tar -C deploy -czf 28d-production-build.tar.gz .
 
       - name: Configure SSH
         env:
@@ -84,7 +82,7 @@ jobs:
 
           chmod 600 ~/.ssh/known_hosts
 
-      - name: Upload staging build
+      - name: Upload production build
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
@@ -92,10 +90,10 @@ jobs:
         run: |
           scp \
             -P "$DEPLOY_PORT" \
-            28d-staging-build.tar.gz \
-            "$DEPLOY_USER@$DEPLOY_HOST:/home/dimensions/deployments/28d-staging-build.tar.gz"
+            28d-production-build.tar.gz \
+            "$DEPLOY_USER@$DEPLOY_HOST:/home/dimensions/deployments/28d-production-build.tar.gz"
 
-      - name: Deploy staging build
+      - name: Deploy production build
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
@@ -107,8 +105,8 @@ jobs:
           set -euo pipefail
 
           DEPLOY_ROOT="/home/dimensions/deployments"
-          RELEASE="$DEPLOY_ROOT/staging-release"
-          LIVE="/home/dimensions/public_html/staging"
+          RELEASE="$DEPLOY_ROOT/production-release"
+          LIVE="/home/dimensions/public_html"
 
           PM2="/home/dimensions/.nvm/versions/node/v22.23.1/bin/pm2"
 
@@ -116,29 +114,32 @@ jobs:
           mkdir -p "$RELEASE"
 
           tar \
-            -xzf "$DEPLOY_ROOT/28d-staging-build.tar.gz" \
+            -xzf "$DEPLOY_ROOT/28d-production-build.tar.gz" \
             -C "$RELEASE"
 
           /usr/bin/rsync -a --delete \
             --exclude='.env' \
             --exclude='.htaccess' \
             --exclude='.well-known/' \
+            --exclude='.ftpquota' \
+            --exclude='staging/' \
+            --exclude='ecosystem.config.js' \
             "$RELEASE/" \
             "$LIVE/"
 
-          "$PM2" reload 28d-staging
+          "$PM2" reload 28d
 
-          "$PM2" status 28d-staging
+          "$PM2" status 28d
 
-          rm -f "$DEPLOY_ROOT/28d-staging-build.tar.gz"
+          rm -f "$DEPLOY_ROOT/28d-production-build.tar.gz"
           rm -rf "$RELEASE"
           REMOTE
 
-      - name: Verify staging
+      - name: Verify production
         run: |
           curl \
             --fail \
             --location \
             --retry 5 \
             --retry-delay 3 \
-            https://staging.28dimensions.com/
+            https://28dimensions.com/
