@@ -68,21 +68,37 @@ export default function EnterpriseSolutions() {
         <div className="mt-12 space-y-16">
           {enterprisePartners.map((partner) => (
             <div key={partner.slug}>
-              <div className="mx-auto flex w-fit items-center gap-6 rounded-2xl border border-white/10 px-8 py-4">
-                <div className="flex items-center gap-3">
+              {/*
+                Below sm, px/gap shrink so the fixed-size "28 DIMENSIONS"
+                lockup and divider don't eat the whole row — that space goes
+                to the partner logo instead of forcing it to collapse to an
+                unreadable sliver. sm+ restores the original px-8/gap-6.
+              */}
+              <div className="mx-auto flex w-fit max-w-full items-center gap-3 rounded-2xl border border-white/10 px-4 py-4 sm:gap-6 sm:px-8">
+                <div className="flex shrink-0 items-center gap-3">
                   <Logomark size={36} />
                   <span className="text-lg font-bold tracking-wide text-white">
                     28 <span className="block text-xs font-semibold tracking-[0.2em] text-white/60">DIMENSIONS</span>
                   </span>
                 </div>
-                <div className="h-10 w-px bg-white/10" />
+                <div className="h-10 w-px shrink-0 bg-white/10" />
                 {partner.logo ? (
+                  // max-h-9 (not a fixed h-9) caps the logo at today's 36px
+                  // desktop height while leaving both dimensions on "auto",
+                  // so the browser scales width and height together from the
+                  // image's intrinsic aspect ratio instead of stretching it.
+                  // min-w-0 lets this flex item actually shrink below that
+                  // size instead of overflowing the pill on narrow viewports
+                  // (the "28 DIMENSIONS" lockup and divider stay shrink-0, so
+                  // they hold their size and the logo alone absorbs the
+                  // squeeze). object-contain is a no-op at the exact aspect
+                  // ratio but guards against ever cropping or distorting it.
                   <Image
                     src={partner.logo}
                     alt={`${partner.name} logo`}
-                    width={1463}
-                    height={329}
-                    className="h-9 w-auto"
+                    width={partner.logoWidth ?? 1463}
+                    height={partner.logoHeight ?? 329}
+                    className="h-auto max-h-9 w-auto max-w-full min-w-0 shrink object-contain"
                   />
                 ) : (
                   <span className="text-lg font-bold tracking-wide text-white">{partner.name}</span>
@@ -94,7 +110,17 @@ export default function EnterpriseSolutions() {
               </p>
               <h3 className="mt-1 text-center text-xl font-bold text-white">{partner.tagline}</h3>
 
-              <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
+              {/*
+                Column count follows product count so each partner's cards
+                lay out evenly: Hamilton's 4 IFRS modules sit 4-across on
+                desktop (2x2 on tablet, 1-up on mobile), while Credence's 3
+                keep their original 3-across desktop layout.
+              */}
+              <div
+                className={`mt-8 grid grid-cols-1 gap-6 ${
+                  partner.products.length === 4 ? "sm:grid-cols-2 lg:grid-cols-4" : "lg:grid-cols-3"
+                }`}
+              >
                 {partner.products.map((product) => {
                   const Icon = product.icon;
                   const styles = colorStyles[product.color];

@@ -6,6 +6,7 @@ module.exports = {
       script: "server.js",
       env: {
         PORT: 3001,
+        HOSTNAME: "127.0.0.1",
         NODE_ENV: "production",
       },
     },
@@ -15,6 +16,7 @@ module.exports = {
       script: "server.js",
       env: {
         PORT: 3002,
+        HOSTNAME: "127.0.0.1",
         NODE_ENV: "production",
       },
     },

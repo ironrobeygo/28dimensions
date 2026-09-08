@@ -51,3 +51,8 @@ deploy.zip
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Deployment artifacts
+deploy_bundle/
+deploy/
+*.tar.gz
